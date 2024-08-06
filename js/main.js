@@ -2050,6 +2050,10 @@ angular.module('storygenApp', [])
           storygen.icons.push({'path':path, 'color':color}); 
         };
       }else{
+        var newList = $('#sortable').children().toArray().map(icon => ({'path': $(icon).attr('src'), color: $(icon).css('background-color')}))
+        index = newList.findIndex(icon => icon.path === storygen.icons[index].path)
+        storygen.icons = newList
+
         // REGENERATE INDIVIDUAL IMAGES
         if (angular.element(index).hasClass("ui-sortable-helper")) {
           console.log("Do nothing!"); // DO NOTHING IF THE IMAGE IS BEING DRAGGED ...theoretically
